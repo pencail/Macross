@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>RSS设置</title>
+    <link rel="stylesheet" href="../../static/AdminUI/component/pear/css/pear.css"
+          th:href="@{/AdminUI/component/pear/css/pear.css}">
+    <!-- 加 载 样 式 -->
+    <link rel="stylesheet" href="../../static/AdminUI/admin/css/loader.css" th:href="@{/AdminUI/admin/css/loader.css}">
+    <!-- 布 局 样 式 -->
+    <link rel="stylesheet" href="../../static/AdminUI/admin/css/admin.css" th:href="@{/AdminUI/admin/css/admin.css}">
+</head>
+<body class="pear-container">
+<div class="layui-card">
+    <div class="layui-card-header" style="text-align: center">
+        RSS设置
+    </div>
+</div>
+<div class="layui-card-body">
+    <form class="layui-form" action="javascript:void(0);">
+        <div class="layui-form-item">
+            <label class="layui-form-label">BT下载路径</label>
+            <div class="layui-input-block">
+                <input type="text" id="dir" name="dir" th:value="${dir}" autocomplete="off" placeholder="请输入"
+                       class="layui-input" style="width: 500px">
+                <span style="display: inline-block">默认没有开启路径验证，请务必填写正确的下载目录,如果随便瞎写导致下载失败或者不知道下哪去，后果自负</span>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">自动下载</label>
+            <div class="layui-input-block">
+                <input id="checkbox-auto" th:checked="${autodown}" type="checkbox" checked name="auto" lay-skin="switch"
+                       lay-filter="switchTest" lay-text="开启|关闭">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit lay-filter="save">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script src="../../static/AdminUI/component/layui/layui.js" th:src="@{/AdminUI/component/layui/layui.js}"></script>
+<script src="../../static/AdminUI/component/pear/pear.js" th:src="@{/AdminUI/component/pear/pear.js}"></script>
+<script src="../../static/js/RssSetting.js" th:src="@{/js/RssSetting.js}"></script>
+
+<!--    <script th:inline="javascript">-->
+
+<!--        -->
+<!--        layui.use(['table','form','jquery'],function () {-->
+<!--            let table = layui.table;-->
+<!--            let form = layui.form;-->
+<!--            let $ = layui.jquery;-->
+<!--            -->
+<!--            form.on('submit(save)', function (data) {-->
+<!--                let auto = "";-->
+<!--                if ($('#checkbox-auto').is(':checked')) {-->
+<!--                    auto = "true"-->
+<!--                } else {-->
+<!--                    auto = "false"-->
+<!--                }-->
+
+<!--                $.ajax({-->
+<!--                    url: "/updataSetting/RSSsetting",-->
+<!--                    type: "post",-->
+<!--                    data: {-->
+<!--                        Dir: $('#dir').val(),-->
+<!--                        auto: auto-->
+<!--                    },-->
+<!--                    success: function (flag) {-->
+<!--                        if (flag === "true") {-->
+<!--                            layer.alert('修 改 成 功</br>',  function () {-->
+<!--                                location.reload();-->
+<!--                            });-->
+<!--                        }-->
+<!--                        if (flag === "fail" || flag === "false") {-->
+<!--                            layer.alert('修改失败，请重试', {icon: 2});-->
+<!--                        }-->
+<!--                        if (flag === "fal") {-->
+<!--                            layer.alert('无需改动', function () {-->
+<!--                                location.reload();-->
+<!--                            });-->
+<!--                        }-->
+<!--                    }-->
+<!--                })-->
+<!--            })-->
+<!--        })-->
+<!--    </script>-->
+</html>

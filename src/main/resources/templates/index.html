@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>登录</title>
+    <!-- 样 式 文 件 -->
+    <link rel="stylesheet" href="../static/AdminUI/component/pear/css/pear.css"
+          th:href="@{/AdminUI/component/pear/css/pear.css}">
+    <link rel="stylesheet" href="../static/AdminUI/admin/css/other/login.css"
+          th:href="@{/AdminUI/admin/css/other/login.css}">
+</head>
+<!-- 代 码 结 构 -->
+<body style="background-size: cover;background-image: url(../static/AdminUI/admin/images/background.svg);"
+      th:style="'background-size: cover;background-image: url(/AdminUI/admin/images/background.svg)'">
+<form class="layui-form" action="javascript:void(0);">
+    <div class="layui-form-item">
+        <img class="logo" src="../static/AdminUI/admin/images/logo.png" th:src="@{/AdminUI/admin/images/logo.png}">
+        <div class="title">Pear Admin</div>
+        <div class="desc">
+            明 湖 区 最 具 影 响 力 的 设 计 规 范 之 一
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <input placeholder="账 户 " id="username" name="username" lay-verify="required" hover class="layui-input"/>
+    </div>
+    <div class="layui-form-item">
+        <input type="password" lay-affix="eye" placeholder="密 码 " id="password" name="password" lay-verify="required"
+               hover class="layui-input"/>
+        <!--				<input  placeholder="密 码 " id="password" name="password" lay-verify="required" hover class="layui-input"  />-->
+    </div>
+    <div class="layui-form-item">
+        <button type="submit" class="pear-btn pear-btn-success login" lay-submit lay-filter="login">
+            登 入
+        </button>
+    </div>
+</form>
+<!-- 资 源 引 入 -->
+<script src="../static/AdminUI/component/layui/layui.js" th:src="@{/AdminUI/component/layui/layui.js}"></script>
+<script src="../static/AdminUI/component/pear/pear.js" th:src="@{/AdminUI/component/pear/pear.js}"></script>
+<script src="../static/js/login.js" th:src="@{/js/login.js}"></script>
+
+<!--		<script  th:inline="javascript">-->
+<!--			layui.use(['form', 'button', 'popup', 'layer', 'jquery'], function() {-->
+<!--				var form = layui.form;-->
+<!--				var button = layui.button;-->
+<!--				var popup = layui.popup;-->
+<!--				var layer = layui.layer;-->
+<!--				var $ = layui.jquery;-->
+
+<!--				// 登 录 提 交-->
+<!--				form.on('submit(login)', function(data) {-->
+
+<!--					/// 登录-->
+<!--					$.ajax({-->
+<!--						url: "/login",-->
+<!--						type: "post",-->
+<!--						data: {-->
+<!--							username:$('#username').val(),-->
+<!--							password:$('#password').val()-->
+<!--						},-->
+<!--						success: function (flag) {-->
+<!--							if (flag == "true") {-->
+<!--								button.load({-->
+<!--									elem: '.login',-->
+<!--									time: 1500,-->
+<!--									done: function() {-->
+<!--										popup.success("登录成功", function() {-->
+<!--											location.href = "/index"-->
+<!--										});-->
+<!--									}-->
+<!--								})-->
+<!--							}-->
+<!--							if (flag == "false") {-->
+<!--								layer.msg('用户名或密码错误', {icon: 0}, function() {-->
+<!--									time: 2000-->
+<!--								})-->
+<!--							}-->
+<!--						}-->
+
+<!--					})-->
+
+<!--					return false;-->
+<!--				});-->
+<!--			})-->
+<!--		</script>-->
+</body>
+</html>

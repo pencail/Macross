@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>链接列表</title>
+    <!-- 依 赖 样 式 -->
+    <link rel="stylesheet" href="../../static/AdminUI/component/pear/css/pear.css"
+          th:href="@{/AdminUI/component/pear/css/pear.css}">
+    <!-- 加 载 样 式 -->
+    <link rel="stylesheet" href="../../static/AdminUI/admin/css/loader.css" th:href="@{/AdminUI/admin/css/loader.css}">
+    <!-- 布 局 样 式 -->
+    <link rel="stylesheet" href="../../static/AdminUI/admin/css/admin.css" th:href="@{/AdminUI/admin/css/admin.css}">
+</head>
+<body class="pear-container">
+<div class="layui-card">
+    <div class="layui-card-header">
+        <span th:text="${title}">111</span>
+    </div>
+    <div class="layui-card-body">
+        <div class="layui-table-view">
+            <div class="layui-table-box">
+                <div class="layui-table-header">
+                    <table class="layui-table" lay-skin="line">
+                        <thead>
+                        <tr>
+                            <th>
+                                <div class="layui-table-cell" style="width: 300px; text-align: center">
+                                    <span>名称</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="layui-table-cell" style="width: 700px; text-align: center">
+                                    <span>链接</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="layui-table-cell" style="width: 100px; text-align: center">
+                                    <span>下载</span>
+                                </div>
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="layui-table-body">
+                    <table class="layui-table" lay-skin="line">
+                        <thead>
+                        <tr th:each="entry:${entry}">
+                            <th>
+                                <div class="layui-table-cell" style="width: 300px; text-align: center">
+                                    <a target="_blank" th:href="${entry.getLink()}" th:text="${entry.getTitle()}"
+                                       class="overflow" th:title="${entry.getTitle()}">
+                                        【白恋动漫萝卜部】[机动战士高达 水星的魔女][Mobile Suit Gundam THE WITCH FROM
+                                        MERCURY][17][GB][1080P][MP4]
+                                    </a>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="layui-table-cell" style="width: 700px; text-align: center">
+                                    <a download="" th:href="${entry.getEnclosures().get(0).getUrl()}"
+                                       th:text="${entry.getEnclosures().get(0).getUrl()}"
+                                       th:title="${entry.getEnclosures().get(0).getUrl()}">
+                                        【白恋动漫萝卜部】[机动战士高达 水星的魔女][Mobile Suit Gundam THE WITCH FROM
+                                        MERCURY][17][GB][1080P][MP4]
+                                    </a>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="layui-table-cell" style="width: 100px; text-align: center">
+                                    <button class="pear-btn pear-btn-primary pear-btn-sm" title="下载"
+                                            th:onclick="download([[${entry.getEnclosures().get(0).getUrl()}]], [[${entry.getTitle()}]])">
+                                        <!--                                                th:data-url="${entry.getEnclosures().get(0).getUrl()}" -->
+                                        <i class="icon pear-icon pear-icon-download"></i>
+                                    </button>
+                                </div>
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../static/AdminUI/component/layui/layui.js" th:src="@{/AdminUI/component/layui/layui.js}"></script>
+<script src="../../static/AdminUI/component/pear/pear.js" th:src="@{/AdminUI/component/pear/pear.js}"></script>
+
+<script th:inline="javascript">
+    layui.use(['layer', 'jquery'], function () {
+        let layer = layui.layer
+        let $ = layui.jquery
+
+        window.download = function (url, title) {
+            console.log(url)
+            console.log(title)
+
+            $.ajax({
+                url: "/RssDownload",
+                type: "post",
+                data: {
+                    BTUrl: url,
+                    BTName: title
+                },
+                success: function (res) {
+                    if (res == "success") {
+                        layer.msg("下载成功", {icon: 1, time: 3000})
+                    }
+                }
+            })
+        }
+
+    })
+</script>
+
+</body>
+</html>

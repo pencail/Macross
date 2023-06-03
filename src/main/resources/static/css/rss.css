@@ -1,0 +1,9 @@
+.rss-center {
+    /*content: '';*/
+    /*position: absolute;*/
+    /*top: -10px;*/
+    /*left: 700px;*/
+    display: inline-block;
+    left: 50%;
+    margin-left: -87px;
+}

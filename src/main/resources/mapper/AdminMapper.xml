@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.macross.server.Dao.AdminMapper">
+    <resultMap id="BaseResultMap" type="com.macross.server.Entity.Admin">
+        <result column="admin_id" jdbcType="INTEGER" property="adminId"/>
+        <result column="admin_name" jdbcType="VARCHAR" property="adminName"/>
+        <result column="admin_password" jdbcType="VARCHAR" property="adminPassword"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        admin_id
+        , admin_name, admin_passowrd
+    </sql>
+
+    <!--登录-->
+    <select id="login" parameterType="com.macross.server.Entity.Admin" resultMap="BaseResultMap">
+        select *
+        from admin
+        where admin_name = #{adminname}
+          and admin_password = #{password}
+    </select>
+
+    <!--通过id查找-->
+    <select id="selectAdmin" parameterType="com.macross.server.Entity.Admin" resultMap="BaseResultMap">
+        select *
+        from admin
+        where admin_id = #{adminId}
+    </select>
+
+    <!--更新信息-->
+    <update id="updateAdmin" parameterType="com.macross.server.Entity.Admin">
+        update admin
+        set admin_password = #{adminPassword}
+        where admin_id = #{adminId}
+    </update>
+</mapper>

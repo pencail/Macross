@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.macross.server.Dao.SettingMapper">
+    <resultMap id="BaseResultMap" type="com.macross.server.Entity.Setting">
+        <result column="set_name" jdbcType="VARCHAR" property="setName"/>
+        <result column="set_value" jdbcType="VARCHAR" property="setValue"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        set_name
+        , set_value
+    </sql>
+
+    <select id="selectSettingByName" parameterType="com.macross.server.Entity.Setting" resultMap="BaseResultMap">
+        select *
+        from settings
+        where set_name = #{setName}
+    </select>
+
+    <update id="updateSetting" parameterType="com.macross.server.Entity.Setting">
+        update settings
+        set set_value = #{setValue}
+        where set_name = #{setName}
+    </update>
+
+</mapper>

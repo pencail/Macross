@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.macross.server.Dao.RssMapper">
+    <resultMap id="BaseResultMap" type="com.macross.server.Entity.RSS">
+        <result column="rss_id" jdbcType="INTEGER" property="rssId"/>
+        <result column="rss_name" jdbcType="VARCHAR" property="rssName"/>
+        <result column="rss_title" jdbcType="VARCHAR" property="rssTitle"/>
+        <result column="rss_link" jdbcType="VARCHAR" property="rssLink"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        rss_id
+        , rss_name, rss_title, rss_link
+    </sql>
+
+    <!--通过id查找-->
+    <select id="selectRss" parameterType="com.macross.server.Entity.RSS" resultMap="BaseResultMap">
+        select *
+        from rss
+        where rss_id = #{rssId}
+    </select>
+
+    <select id="selectRssAll" parameterType="com.macross.server.Entity.RSS" resultMap="BaseResultMap">
+        select *
+        from rss
+    </select>
+
+    <select id="selectRssByUrl" parameterType="com.macross.server.Entity.RSS" resultMap="BaseResultMap">
+        select *
+        from rss
+        where rss_link = #{rssLink}
+    </select>
+
+    <!--添加链接-->
+    <insert id="insertRss" parameterType="com.macross.server.Entity.RSS">
+        insert into rss (rss_name, rss_title, rss_link)
+            value (#{rssName,jdbcType=VARCHAR}, #{rssTitle,jdbcType=VARCHAR}, #{rssLink,jdbcType=VARCHAR})
+    </insert>
+
+    <!--删除订阅-->
+    <delete id="deleteRss" parameterType="com.macross.server.Entity.RSS">
+        delete
+        from rss
+        where rss_id = #{rssId}
+    </delete>
+
+</mapper>

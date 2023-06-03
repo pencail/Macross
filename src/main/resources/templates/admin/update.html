@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>更新</title>
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    <link rel="stylesheet" href="../../static/AdminUI/component/pear/css/pear.css"
+          th:href="@{/AdminUI/component/pear/css/pear.css}">
+    <link rel="stylesheet" href="../../static/css/xadmin.css" th:href="@{/css/xadmin.css}">
+</head>
+<body>
+<form class="layui-form" id="editform" action="javascript:void(0);">
+    <div class="main-container">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-block">
+                <input type="text" id="adminname" name="adminName" lay-verify="required"
+                       autocomplete="off" class="layui-input" th:value="${admin_name}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span> 密码
+            </label>
+            <div class="layui-input-block">
+                <input type="password" id="L_pass" name="adminPassword" required="" lay-verify="pass"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="x-red">*</span> 确认密码
+            </label>
+            <div class="layui-input-block">
+                <input type="password" id="L_repass" required="" lay-verify="repass"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="pear-btn pear-btn-primary pear-btn-sm" lay-submit
+                    lay-filter="updata">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button type="reset" class="pear-btn pear-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+<script src="../../static/AdminUI/component/layui/layui.js" th:src="@{/AdminUI/component/layui/layui.js}"></script>
+<script src="../../static/AdminUI/component/pear/pear.js" th:src="@{/AdminUI/component/pear/pear.js}"></script>
+<script src="../../static/js/adminUpdata.js" th:src="@{/js/adminUpdata.js}"></script>
+<!--        <script th:inline="javascript">-->
+<!--            layui.use(['form', 'layer', 'jquery'],function (){-->
+<!--                var $ = layui.jquery;-->
+<!--                var layer = layui.layer;-->
+<!--                var form = layui.form;-->
+
+<!--                form.on('submit(updata)', function(data) {-->
+<!--                        if ($('#L_pass').val() !== $('#L_repass').val()) {-->
+<!--                            layer.alert('两次密码不一致')-->
+<!--                        } else {-->
+<!--                            $.ajax({-->
+<!--                                type: 'post',-->
+<!--                                url: '/updateAdmin',-->
+<!--                                data: {-->
+<!--                                    adminName:$('#adminname').val(),-->
+<!--                                    adminPassword:$('#L_pass').val()-->
+<!--                                },-->
+<!--                                success: function (UpdataFlag) {-->
+<!--                                    if (UpdataFlag == "true") {-->
+<!--                                        layer.alert('修 改 成 功',  function () {-->
+<!--                                            location.reload();-->
+<!--                                        });-->
+<!--                                    }-->
+<!--                                    if (UpdataFlag == "false") {-->
+<!--                                        layer.msg('修改失败', {-->
+<!--                                            time: 2000-->
+<!--                                        })-->
+<!--                                    }-->
+<!--                                }-->
+<!--                            })-->
+<!--                        }-->
+<!--                })-->
+<!--                return false;-->
+<!--            })-->
+<!--        </script>-->
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+@charset "utf-8";
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    width: 100%;
+    min-height: 100%;
+    background: #f1f1f1;
+    /*background: #fff;*/
+}
+
+.x-red {
+    color: red;
+}
+
+.x-admin-sm .layui-table td, .x-admin-sm .layui-table th {
+    font-size: 12px;
+}
+
+.x-admin-sm .layui-elem-field legend {
+    font-size: 18px;
+}
+
+.x-admin-sm .x-admin-backlog-body p cite {
+    font-size: 24px;
+}
+
+.x-admin-sm .left-nav #nav li a cite {
+    font-size: 12px;
+}
+
+.x-admin-sm .iconfont {
+    font-size: 14px;
+}
+
+.x-admin-sm .layui-tab-title li {
+    font-size: 12px;
+}
+
+.x-admin-sm .layui-icon {
+    font-size: 14px;
+}
+
+.x-admin-sm .layui-nav * {
+    font-size: 12px;
+}
+
+.x-admin-sm .layui-breadcrumb > * {
+    font-size: 12px;
+}
+
+.x-admin-sm .layui-btn, .x-admin-sm .layui-btn-xs, .x-admin-sm .layui-btn-sm {
+    font-size: 12px;
+}
+
+.x-admin-sm .layui-laydate {
+    font-size: 12px;
+}
+

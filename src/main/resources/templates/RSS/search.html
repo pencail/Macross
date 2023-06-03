@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>RSS查询</title>
+    <!-- 依 赖 样 式 -->
+    <link rel="stylesheet" href="../../static/AdminUI/component/pear/css/pear.css"
+          th:href="@{/AdminUI/component/pear/css/pear.css}">
+    <!-- 加 载 样 式 -->
+    <link rel="stylesheet" href="../../static/AdminUI/admin/css/loader.css" th:href="@{/AdminUI/admin/css/loader.css}">
+    <!-- 布 局 样 式 -->
+    <link rel="stylesheet" href="../../static/AdminUI/admin/css/admin.css" th:href="@{/AdminUI/admin/css/admin.css}">
+    <link rel="stylesheet" href="../../static/css/rss.css" th:href="@{/css/rss.css}">
+</head>
+<body>
+<form class="layui-form" action="javascript:void(0);">
+    <div class="layui-form-item">
+        <input placeholder="RSS订阅链接" id="rsslink" name="rsslink" lay-verify="required" hover class="layui-input"/>
+    </div>
+    <div class="layui-form-item rss-center">
+        <button class="layui-btn " lay-submit lay-filter="search">查询</button>
+        <button class="layui-btn layui-btn-warm" id="subscription">订阅</button>
+    </div>
+</form>
+<!-- 资 源 引 入 -->
+<script src="../../static/AdminUI/component/layui/layui.js" th:src="@{/AdminUI/component/layui/layui.js}"></script>
+<script src="../../static/AdminUI/component/pear/pear.js" th:src="@{/AdminUI/component/pear/pear.js}"></script>
+<script src="../../static/js/RssSearch.js" th:src="@{/js/RssSearch.js}"></script>
+
+<!--    <script th:inline="javascript">-->
+<!--        layui.use(['form', 'layer', 'jquery','util'], function () {-->
+
+<!--            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引-->
+
+<!--            var $ = layui.jquery;-->
+<!--            var layer = layui.layer;-->
+<!--            var form = layui.form;-->
+
+<!--            $("#subscription").click(function () {-->
+
+<!--                layer.prompt({title: 'RSS自定义名称'}, function(value){-->
+
+<!--                    let rsslink = $('#rsslink').val()-->
+
+<!--                    if (!checkUrl(rsslink)) {-->
+<!--                        layer.alert("url错误")-->
+<!--                    } else {-->
+<!--                        //保存链接-->
+<!--                        $.ajax({-->
+<!--                            url: "/SaveRss",-->
+<!--                            type: "post",-->
+<!--                            data: {-->
+<!--                                rsslink: $('#rsslink').val(),-->
+<!--                                rssname: value.toString()-->
+<!--                            },-->
+<!--                            success: function (flag) {-->
+<!--                                if (flag == "true") {-->
+<!--                                    layer.alert("订阅成功", function () {-->
+<!--                                        parent.layer.close(index);-->
+<!--                                    })-->
+<!--                                }-->
+<!--                                if (flag == "repeat") {-->
+<!--                                    layer.alert("订阅列表中已有此链接")-->
+<!--                                }-->
+<!--                            }-->
+<!--                        })-->
+<!--                    }-->
+<!--                });-->
+<!--            });-->
+
+<!--            // 搜索链接-->
+<!--            form.on('submit(search)', function (){-->
+
+<!--                let rsslink = $('#rsslink').val()-->
+
+<!--                if (!checkUrl(rsslink)) {-->
+<!--                    layer.alert("url错误")-->
+<!--                } else {-->
+<!--                    parent.layer.open({-->
+<!--                        type: 2,-->
+<!--                        title: '链接列表',-->
+<!--                        shade: 0.1,-->
+<!--                        maxmin: true,-->
+<!--                        area: ['1200px', '600px'],-->
+<!--                        content: '/RssSearch?rsslink='+rsslink-->
+<!--                    })-->
+<!--                }-->
+<!--            })-->
+
+<!--            function checkUrl(str) {-->
+<!--                var v = new RegExp('^(?!mailto:)(?:(?:http|https|ftp)://|//)(?:\\S+(?::\\S*)?@)?(?:(?:(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[0-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,})))|localhost)(?::\\d{2,5})?(?:(/|\\?|#)[^\\s]*)?$', 'i');-->
+<!--                return v.test(str);-->
+<!--            }-->
+
+<!--        })-->
+<!--    </script>-->
+</body>
+</html>
