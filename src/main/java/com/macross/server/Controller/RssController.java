@@ -7,6 +7,7 @@ import com.macross.server.Entity.Setting;
 import com.macross.server.Service.RssService;
 import com.macross.server.Service.SettingService;
 import com.macross.server.Utils.RssUtil;
+import com.macross.server.Utils.urlEncodeChineseUtil;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import jakarta.annotation.Resource;
@@ -76,7 +77,6 @@ public class RssController {
     @RequestMapping("/RssSearch")
     public String RssSearch(@RequestParam("rsslink") String url,
                             Model model) throws Exception {
-
 
         SyndFeed feed = RssUtil.RssSearch(url);
 
@@ -194,7 +194,9 @@ public class RssController {
         if (!file.exists()) {
             file.mkdirs();
         }
-        FileUtils.copyURLToFile(url, new File(dir + BTname));
+
+        String name = urlEncodeChineseUtil.symbolencoder(BTname);
+        FileUtils.copyURLToFile(url, new File(dir+File.separator+name+".torrent"));
 
         return "success";
     }

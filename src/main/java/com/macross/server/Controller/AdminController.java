@@ -41,18 +41,15 @@ public class AdminController {
         String flag = "";
 
         if (admin != null) {
-//            request.getSession().setAttribute("flag", 0);
-//
-//            request.getSession().setAttribute("adminname", admin.getAdminName());
+            /**
+             * 将用户信息保存如session
+             */
             request.getSession().setAttribute("admin", admin);
-//
-//            return "1/index";
+
             flag = "true";
             return flag;
         }
 
-//        request.getSession().setAttribute("flag", 1);
-//        return "index";
         flag = "false";
         return flag;
     }

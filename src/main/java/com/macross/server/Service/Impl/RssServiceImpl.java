@@ -1,5 +1,6 @@
 package com.macross.server.Service.Impl;
 
+import com.macross.server.Properties.properties;
 import com.macross.server.Dao.RssMapper;
 import com.macross.server.Dao.SettingMapper;
 import com.macross.server.Entity.RSS;
@@ -14,6 +15,9 @@ import java.util.List;
 
 @Service("RssService")
 public class RssServiceImpl implements RssService {
+
+    @Autowired
+    private properties properties;
 
     @Qualifier("rssMapper")
     @Autowired
@@ -91,10 +95,12 @@ public class RssServiceImpl implements RssService {
 
     @Override
     public String download() {
-        String setName = "RSSdownloadDir";
-        List<Setting> download = settingMapper.selectSettingByName(setName);
-
-        return download.get(0).getSetValue();
+//        String setName = "RSSdownloadDir";
+//        List<Setting> download = settingMapper.selectSettingByName(setName);
+//
+//        return download.get(0).getSetValue();
+        String dir = properties.getWorkDir()+File.separator+"torrent";
+        return dir;
     }
 
     @Override

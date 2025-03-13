@@ -21,6 +21,8 @@ public class RssUtil {
         if (RssLink.contains(" ")) {
             RssLink = (RssLink.replace(" ", "+"));
         }
+        //对链接中的中文进行编码
+        RssLink = urlEncodeChineseUtil.urlEncode(RssLink);
 
         SyndFeed feed = null;
         XmlReader reader = new XmlReader(new URL(RssLink));
@@ -32,7 +34,7 @@ public class RssUtil {
     }
 
     public static void main(String[] args) throws Exception {
-        String url = "https://mikan.ellye.org/RSS/Search?searchstr=%E7%99%BD%E6%81%8B%E5%8A%A8%E6%BC%AB%E8%90%9D%E5%8D%9C%E9%83%A8+%E6%9C%BA%E5%8A%A8%E6%88%98%E5%A3%AB%E9%AB%98%E8%BE%BE+%E6%B0%B4%E6%98%9F%E7%9A%84%E9%AD%94%E5%A5%B3";
+        String url = "https://mikanime.tv/RSS/Search?searchstr=刀剑神域";
         SyndFeed feed = RssSearch(url);
 //        System.out.println(feed);
         System.out.println(feed.getTitle());
